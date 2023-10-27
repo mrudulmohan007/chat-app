@@ -28,11 +28,12 @@ class _NewMessageState extends State<NewMessage> {
     _messageController.clear(); //clearing the textfield
     final user = FirebaseAuth.instance.currentUser!; //to get current user
 
-    final userData = await FirebaseFirestore
-        .instance //retrive username and userImage from collection 'users'
-        .collection('users')
-        .doc(user.uid)
-        .get();
+    final userData =
+        await FirebaseFirestore //retrive username and userImage from collection 'users'
+            .instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
 
     //send to firebase
     FirebaseFirestore.instance.collection('chat').add({
